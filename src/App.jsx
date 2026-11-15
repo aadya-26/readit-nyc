@@ -54,7 +54,7 @@ export default function App() {
         const ts = clean.map(r => r.created_utc).filter(Boolean);
         if (ts.length) {
           setTimestamps(ts);
-          setTimeValue(Math.min(...ts));
+          setTimeValue(Math.max(...ts));
         }
         const unique = [...new Set(clean.map(r => r.borough).filter(Boolean))].sort();
         setBoroughs(unique);
@@ -153,6 +153,13 @@ export default function App() {
           <NavigationControl position="bottom-right" />
         </Map>
       </DeckGL>
+
+      <div style={{
+        position: 'fixed', bottom: 4, right: 8, zIndex: 800,
+        fontFamily: "'DM Mono', monospace", fontSize: '9px', color: '#64748b',
+      }}>
+        © CARTO · © OpenStreetMap contributors
+      </div>
 
       {/* Header */}
       <div style={{

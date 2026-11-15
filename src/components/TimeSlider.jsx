@@ -28,7 +28,7 @@ export default function TimeSlider({ timestamps, value, onChange }) {
       padding: '14px 24px', display: 'flex', alignItems: 'center', gap: 16,
       zIndex: 900, minWidth: 460, fontFamily: "'DM Mono', monospace",
     }}>
-      <button onClick={() => setPlaying(p => !p)} style={{
+      <button onClick={() => { if (!playing && value >= max) onChange(min); setPlaying(p => !p); }} style={{
         background: playing ? 'rgba(99,102,241,0.25)' : 'rgba(255,255,255,0.06)',
         border: `1px solid ${playing ? 'rgba(99,102,241,0.4)' : 'rgba(255,255,255,0.1)'}`,
         color: playing ? '#a5b4fc' : '#94a3b8',
